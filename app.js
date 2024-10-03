@@ -142,6 +142,7 @@ function checkout() {
     displayCart(); // Cập nhật giỏ hàng hiển thị
 }
 
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 // Thêm sản phẩm yêu cầu vào danh sách sản phẩm
 const requestForm = document.getElementById('product-request-form');
 const productPriceDisplay = document.getElementById('product-price-display');
@@ -315,3 +316,65 @@ if (requestForm) {
     });
 }
 
+// Khởi tạo Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyCZTpNGJmrIt2e26gi518vmrfiNUi7SO3k",
+    authDomain: "gjproject-d2e54.firebaseapp.com",
+    databaseURL: "https://gjproject-d2e54.firebaseio.com",
+    projectId: "gjproject-d2e54",
+    storageBucket: "gjproject-d2e54.appspot.com",
+    messagingSenderId: "620937597723",
+    appId: "1:620937597723:web:4fdae7978c7f32343539be"
+};
+
+// Khởi tạo Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// Hàm thêm sản phẩm
+function addProduct(product) {
+    const productsRef = db.ref('products');
+    productsRef.push(product);
+}
+
+// Hàm lấy sản phẩm
+function getProducts() {
+    const productsRef = db.ref('products');
+    productsRef.on('value', (snapshot) => {
+        const products = snapshot.val();
+        displayProducts(products);
+    });
+}
+
+// Hàm hiển thị sản phẩm
+function displayProducts(products) {
+    const displayArea = document.getElementById('product-price-display');
+    displayArea.innerHTML = ''; // Xóa nội dung cũ
+    for (const key in products) {
+        if (products.hasOwnProperty(key)) {
+            const product = products[key];
+            displayArea.innerHTML += `<p>${product.name}: ${product.note}</p>`;
+        }
+    }
+}
+
+// Gọi hàm để lấy sản phẩm khi trang được tải
+window.addEventListener('load', function() {
+    getProducts();
+});
+
+// Sự kiện thêm sản phẩm
+const requestForm = document.getElementById('product-request-form');
+if (requestForm) {
+    requestForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const productName = document.getElementById('product-name').value;
+        const productNote = document.getElementById('product-note').value;
+        const product = {
+            name: productName,
+            note: productNote
+        };
+        addProduct(product); // Gọi hàm để thêm sản phẩm
+        requestForm.reset(); // Đặt lại form sau khi thêm sản phẩm
+    });
+}
