@@ -1,14 +1,22 @@
+
 let cart = [];
 let products = [];
 
-// Tạo nhiều sản phẩm với mức giá khác nhau
-function generateProducts() {
-    for (let i = 1; i <= 10; i++) {
-        products.push({ name: `Product $1 - ${i}`, price: 1, note: '' });
-        products.push({ name: `Product $10 - ${i}`, price: 10, note: '' });
-        products.push({ name: `Product $20 - ${i}`, price: 20, note: '' });
+
+// Đặt mật khẩu cho người dùng có quyền thêm sản phẩm
+const adminPassword = "admin123";
+// Thay đổi mật khẩu tại đây
+let isAdmin = false;
+// Hàm kiểm tra quyền truy cập của người dùng
+function checkAdminPassword(inputPassword) {
+    if (inputPassword === adminPassword) {
+        isAdmin = true; // Đặt isAdmin thành true nếu mật khẩu đúng
+        alert('Access granted!');
+    } else {
+        alert('Incorrect password!'); // Thông báo nếu mật khẩu sai
     }
 }
+
 
 // Tải sản phẩm từ localStorage và giỏ hàng khi trang được tải
 window.addEventListener('load', function() {
@@ -19,7 +27,7 @@ window.addEventListener('load', function() {
     if (localStorage.getItem('products')) {
         products = JSON.parse(localStorage.getItem('products'));
     } else {
-        generateProducts(); // Tạo sản phẩm nếu chưa có
+        // Không tạo sản phẩm tự động nữa
     }
 
     if (window.location.pathname.includes('product.html')) {
@@ -140,6 +148,17 @@ const productPriceDisplay = document.getElementById('product-price-display');
 if (requestForm) {
     requestForm.addEventListener('submit', function(event) {
         event.preventDefault();
+        // Khi người dùng nhập mật khẩu từ form
+
+       
+        // Kiểm tra mật khẩu
+        const passwordInput = document.getElementById('admin-password').value;
+        if (passwordInput !== adminPassword) {
+            alert('Incorrect password. You do not have permission to add products.');
+            return; // Dừng lại nếu mật khẩu không đúng
+        } else {
+            isAdmin = true; // Người dùng đã xác thực thành công
+        }
 
         const productName = document.getElementById('product-name').value;
         const productNote = document.getElementById('product-note').value;
@@ -221,9 +240,77 @@ function applyPriceFilter() {
                 product.style.display = 'block';
             } else if (filterValue === '20-50' && productPrice > 20 && productPrice <= 50) {
                 product.style.display = 'block';
+            } else if (filterValue === '50-100' && productPrice > 50 && productPrice <= 100) {
+                product.style.display = 'block';
             } else {
                 product.style.display = 'none';
             }
         });
+    });
+}
+// Xử lý yêu cầu xóa sản phẩm
+const removeForm = document.getElementById('product-remove-form');
+if (removeForm) {
+    removeForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const productName = document.getElementById('remove-product-name').value;
+        const adminPassword = document.getElementById('admin-password-remove').value; // Có thể thay đổi điều kiện xác thực mật khẩu
+
+        // Kiểm tra mật khẩu admin (có thể thay đổi theo yêu cầu)
+        if (adminPassword !== 'gj205') {
+            alert('Incorrect admin password!');
+            return;
+        }
+
+        // Tìm và xóa sản phẩm
+        const productIndex = products.findIndex(product => product.name === productName);
+        if (productIndex > -1) {
+            products.splice(productIndex, 1); // Xóa sản phẩm tại vị trí chỉ định
+            localStorage.setItem('products', JSON.stringify(products)); // Cập nhật sản phẩm trong localStorage
+            alert('Product removed successfully!');
+        } else {
+            alert('Product not found!');
+        }
+
+        removeForm.reset(); // Đặt lại form sau khi gửi yêu cầu
+    });
+}
+// Thêm sự kiện cho nút "Add/Remove Product"
+document.getElementById('toggle-form-button').addEventListener('click', function() {
+    const formContainer = document.getElementById('form-container');
+    // Chuyển đổi trạng thái hiển thị của form
+    if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+        formContainer.style.display = 'block'; // Hiện form
+    } else {
+        formContainer.style.display = 'none'; // Ẩn form
+    }
+});
+
+// Phần mã JavaScript trước đó...
+if (requestForm) {
+    requestForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const productName = document.getElementById('product-name').value;
+        const productNote = document.getElementById('product-note').value;
+        const productPrice = parseFloat(document.getElementById('product-price').value); // Lấy giá từ trường input
+
+        // Kiểm tra giá sản phẩm có hợp lệ không
+        if (isNaN(productPrice) || productPrice <= 0) {
+            alert('Please enter a valid price greater than 0.');
+            return; // Dừng lại nếu giá không hợp lệ
+        }
+
+        const newProduct = {
+            name: productName,
+            price: productPrice,
+            note: productNote
+        };
+
+        products.push(newProduct);
+        localStorage.setItem('products', JSON.stringify(products)); // Lưu danh sách sản phẩm vào localStorage
+        alert('Product requested successfully!');
+        requestForm.reset(); // Đặt lại form sau khi gửi yêu cầu
     });
 }
