@@ -1,0 +1,67 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #24d960;
+    color: rgb(15, 15, 15);
+    padding: 1em;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.filter {
+    margin: 20px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 150px; /* Thay đổi kích thước sản phẩm */
+    text-align: center;
+}
+
+.product h2 {
+    font-size: 1.2em; /* Thay đổi kích thước tiêu đề sản phẩm */
+}
+
+.product p {
+    font-size: 1em; /* Thay đổi kích thước văn bản */
+}
+
+.product button {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: #218838;
+}
+
+.product-request {
+    margin: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #f1f1f1;
+}
