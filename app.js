@@ -318,14 +318,14 @@ if (requestForm) {
 
 // Khởi tạo Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyCZTpNGJmrIt2e26gi518vmrfiNUi7SO3k",
-    authDomain: "gjproject-d2e54.firebaseapp.com",
-    databaseURL: "https://gjproject-d2e54.firebaseio.com",
-    projectId: "gjproject-d2e54",
-    storageBucket: "gjproject-d2e54.appspot.com",
-    messagingSenderId: "620937597723",
-    appId: "1:620937597723:web:4fdae7978c7f32343539be"
-};
+    apiKey: "AIzaSyCg-D1w4a6hToGK7hUxBL9raHtZOYdgjmI",
+    authDomain: "gjteam-f7279.firebaseapp.com",
+    databaseURL: "https://gjteam-f7279-default-rtdb.firebaseio.com",
+    projectId: "gjteam-f7279",
+    storageBucket: "gjteam-f7279.appspot.com",
+    messagingSenderId: "1074208779616",
+    appId: "1:1074208779616:web:643197ccdcc1aa00b8c205"
+  };
 
 // Khởi tạo Firebase
 firebase.initializeApp(firebaseConfig);
