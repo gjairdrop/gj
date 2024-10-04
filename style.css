@@ -65,3 +65,278 @@ footer {
     padding: 1em;
     background-color: #f1f1f1;
 }
+.header {
+    transition: opacity 0.5s ease;
+    position: fixed; /* Giữ phần tiêu đề ở vị trí cố định */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white; /* Màu nền của tiêu đề */
+    z-index: 1000; /* Để phần tiêu đề luôn nằm trên cùng */
+}
+
+.header.hidden {
+    opacity: 0; /* Độ mờ khi cuộn xuống */
+}
+.product {
+    transition: opacity 0.3s ease;
+}
+
+.product.faded {
+    opacity: 0.3; /* Độ mờ khi sản phẩm đã lướt qua */
+}
+.product {
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Thêm cả chuyển động cho sản phẩm */
+}
+
+.product.faded {
+    opacity: 0.3; /* Độ mờ khi sản phẩm đã lướt qua */
+    transform: translateY(10px); /* Di chuyển nhẹ xuống dưới khi mờ */
+}
+.product-request {
+    background-color: #f9f9f9; /* Màu nền cho section */
+    padding: 20px; /* Đệm cho section */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    max-width: 500px; /* Chiều rộng tối đa */
+    margin: 20px auto; /* Canh giữa */
+}
+
+.product-request h2 {
+    text-align: center; /* Căn giữa tiêu đề */
+    color: #333; /* Màu chữ */
+}
+
+.product-request form {
+    display: flex; /* Sử dụng flexbox cho form */
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+}
+
+.product-request label {
+    margin: 10px 0 5px; /* Đệm cho label */
+    font-weight: bold; /* Làm đậm chữ label */
+}
+
+.product-request input,
+.product-request textarea {
+    padding: 10px; /* Đệm cho input và textarea */
+    border: 1px solid #ccc; /* Đường viền */
+    border-radius: 4px; /* Bo góc */
+    font-size: 16px; /* Kích thước chữ */
+}
+
+.product-request input:focus,
+.product-request textarea:focus {
+    border-color: #007bff; /* Màu viền khi focus */
+    outline: none; /* Bỏ viền mặc định */
+}
+
+.product-request button {
+    padding: 10px; /* Đệm cho nút */
+    background-color: #007bff; /* Màu nền nút */
+    color: white; /* Màu chữ */
+    border: none; /* Bỏ đường viền */
+    border-radius: 4px; /* Bo góc */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+    margin-top: 10px; /* Đệm trên nút */
+}
+
+.product-request button:hover {
+    background-color: #0056b3; /* Màu nền nút khi hover */
+}
+/* Reset một số mặc định */
+* {
+    box-sizing: border-box; /* Đảm bảo chiều rộng và chiều cao bao gồm cả padding và border */
+    margin: 0; /* Bỏ margin */
+    padding: 0; /* Bỏ padding */
+}
+
+/* Thiết lập màu nền và font chung cho trang */
+body {
+    background-color: #f0f0f0; /* Màu nền sáng */
+    font-family: 'Arial', sans-serif; /* Font chữ đơn giản, dễ đọc */
+    color: #333; /* Màu chữ chính */
+}
+
+/* Phần tiêu đề */
+header {
+    background-color: #c3cedb; /* Màu nền tiêu đề */
+    color: white; /* Màu chữ tiêu đề */
+    text-align: center; /* Căn giữa tiêu đề */
+    padding: 20px 0; /* Đệm cho tiêu đề */
+}
+
+/* Các phần sản phẩm */
+.products {
+    display: grid; /* Sử dụng grid để sắp xếp sản phẩm */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Tự động điều chỉnh số cột */
+    gap: 15px; /* Khoảng cách giữa các sản phẩm */
+    padding: 20px; /* Đệm cho khu vực sản phẩm */
+}
+
+/* Các sản phẩm */
+.product {
+    background-color: white; /* Màu nền sản phẩm */
+    border: 2px solid #ccc; /* Đường viền sản phẩm */
+    border-radius: 8px; /* Bo góc sản phẩm */
+    padding: 15px; /* Đệm cho sản phẩm */
+    text-align: center; /* Căn giữa nội dung sản phẩm */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển động */
+}
+
+.product:hover {
+    transform: translateY(-5px); /* Nâng sản phẩm khi hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng cho sản phẩm khi hover */
+}
+
+/* Nút thêm vào giỏ hàng */
+.add-to-cart {
+    background-color: #28a745; /* Màu nền nút */
+    color: white; /* Màu chữ nút */
+    border: none; /* Bỏ đường viền */
+    border-radius: 4px; /* Bo góc nút */
+    padding: 10px; /* Đệm cho nút */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển động */
+}
+
+.add-to-cart:hover {
+    background-color: #218838; /* Màu nền khi hover */
+}
+
+/* Phần giỏ hàng */
+.cart {
+    background-color: white; /* Màu nền giỏ hàng */
+    border: 2px solid #ccc; /* Đường viền giỏ hàng */
+    border-radius: 8px; /* Bo góc giỏ hàng */
+    padding: 20px; /* Đệm cho giỏ hàng */
+    margin-top: 20px; /* Đệm trên giỏ hàng */
+}
+
+/* Nút thanh toán */
+.cart button {
+    background-color: #84a6c9; /* Màu nền nút thanh toán */
+    color: white; /* Màu chữ nút thanh toán */
+    border: none; /* Bỏ đường viền */
+    border-radius: 4px; /* Bo góc nút thanh toán */
+    padding: 10px; /* Đệm cho nút thanh toán */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển động */
+}
+
+.cart button:hover {
+    background-color: #62de5d9a; /* Màu nền khi hover */
+}
+
+/* Phần yêu cầu sản phẩm */
+.product-request {
+    background-color: #fff; /* Màu nền cho yêu cầu sản phẩm */
+    border: 2px solid #ccc; /* Đường viền cho yêu cầu sản phẩm */
+    border-radius: 8px; /* Bo góc */
+    padding: 20px; /* Đệm cho yêu cầu sản phẩm */
+    margin-top: 20px; /* Đệm trên yêu cầu sản phẩm */
+}
+
+/* Các trường nhập liệu */
+.product-request input,
+.product-request textarea {
+    border: 2px solid #ccc; /* Đường viền cho input và textarea */
+    border-radius: 4px; /* Bo góc cho input và textarea */
+    padding: 10px; /* Đệm cho input và textarea */
+    margin-bottom: 10px; /* Đệm dưới mỗi trường nhập liệu */
+    font-size: 16px; /* Kích thước chữ */
+}
+
+/* Nút gửi yêu cầu */
+.product-request button {
+    background-color: #18ef79; /* Màu nền nút */
+    color: white; /* Màu chữ nút */
+    border: none; /* Bỏ đường viền */
+    border-radius: 4px; /* Bo góc */
+    padding: 10px; /* Đệm cho nút */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển động */
+}
+
+.product-request button:hover {
+    background-color: #10db6f; /* Màu nền khi hover */
+}
+/* Menu */
+/* Menu */
+.navbar {
+    background-color: #20df73; /* Màu nền cho menu */
+    padding: 15px 0; /* Đệm cho menu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng cho menu */
+}
+
+/* Danh sách menu */
+.menu {
+    display: flex; /* Sử dụng flexbox để sắp xếp menu */
+    justify-content: center; /* Căn giữa danh sách menu */
+    list-style-type: none; /* Bỏ kiểu danh sách */
+}
+
+/* Mục menu */
+.menu li {
+    position: relative; /* Để tạo vị trí cho hiệu ứng hoạt hình */
+    margin: 0 20px; /* Đệm giữa các mục menu */
+}
+
+/* Liên kết menu */
+.menu a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: white; /* Màu chữ cho liên kết */
+    font-weight: bold; /* In đậm chữ */
+    padding: 10px 15px; /* Đệm cho liên kết */
+    border: 2px solid transparent; /* Đường viền trong suốt cho hiệu ứng hover */
+    border-radius: 4px; /* Bo góc cho liên kết */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Hiệu ứng hover cho liên kết */
+.menu a:hover {
+    background-color: #13e471; /* Màu nền khi hover */
+    border-color: white; /* Đường viền trắng khi hover */
+    transform: scale(1.1); /* Phóng to liên kết khi hover */
+}
+
+/* Hiệu ứng mở rộng cho mục menu */
+.menu li::after {
+    content: ''; /* Tạo một phần tử giả */
+    position: absolute; /* Để định vị */
+    width: 100%; /* Chiều rộng 100% */
+    height: 2px; /* Chiều cao đường viền */
+    background: white; /* Màu đường viền */
+    bottom: -5px; /* Đặt đường viền ở dưới cùng */
+    left: 0; /* Đặt từ bên trái */
+    transform: scaleX(0); /* Khởi tạo chiều rộng đường viền là 0 */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển động cho đường viền */
+}
+
+/* Hiệu ứng đường viền dưới mục menu khi hover */
+.menu li:hover::after {
+    transform: scaleX(1); /* Mở rộng chiều rộng của đường viền */
+}
+/* Styles cho nút dropdown */
+.animated-dropdown {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 2px;
+    background-color: #ffcc00; /* Màu nền */
+    color: #333; /* Màu chữ */
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hiệu ứng hover */
+.animated-dropdown:hover {
+    background-color: #1ae62f; /* Màu nền khi hover */
+    transform: scale(1.05); /* Phóng to một chút khi hover */
+}
+
+/* Hiệu ứng focus */
+.animated-dropdown:focus {
+    outline: none; /* Bỏ viền mặc định */
+    box-shadow: 0 0 5px rgba(234, 11, 11, 0.5); /* Đổ bóng khi focus */
+}

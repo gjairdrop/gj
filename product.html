@@ -6,21 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Online Shop - Products</title>
     <link rel="stylesheet" href="style.css">
+   
 </head>
 <body>
-    <header>
-        <h1>Products</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="product.html">Products</a>
-            <a href="cart.html">Cart</a>
-        </nav>
-    </header>
+    <div class="header">
+        <header>
+            <nav class="navbar">
+                <ul class="menu">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./product.html">Products</a></li>
+                    <li><a href="./cart.html">Cart</a></li>
+        </header>
 
     <!-- Phần lọc giá -->
     <section class="filter">
         <label for="price-filter">Filter by Price:</label>
-        <select id="price-filter">
+        <select id="price-filter"class="animated-dropdown">
             <option value="all">All</option>
             <option value="1-10">$1 - $10</option>
             <option value="10-20">$10 - $20</option>
@@ -28,11 +29,12 @@
             <option value="50-100">$50 - $100</option>
         </select>
     </section>
-
+</div>
     <!-- Danh sách sản phẩm -->
     <section class="products">
         <!-- Sản phẩm sẽ được hiển thị tại đây thông qua JavaScript -->
     </section>
+
 
    <!-- Form yêu cầu sản phẩm -->
 <section class="product-request">
@@ -43,7 +45,7 @@
         
         <p id="product-price-display">Product Price: $</p> <!-- Thêm dòng này để hiển thị giá sản phẩm -->
         
-        <label for="product-note">Note:</label>
+        <label for="product-note">Email:</label>
         <textarea id="product-note"></textarea>
         
         <button type="submit">Submit Request</button>
@@ -52,7 +54,7 @@
 
 
     <footer>
-        <p>© 2024 My Online Shop</p>
+        <p>© GJTEAM</p>
     </footer>
 
     <script src="app.js"></script>

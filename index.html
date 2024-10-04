@@ -5,66 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Online Shop - Products</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* CSS để định dạng nút ẩn và form */
-        #toggle-form-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #form-container {
-            position: fixed;
-            bottom: 70px; /* Để không chồng lên nút */
-            right: 20px;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            display: none; /* Bắt đầu với trạng thái ẩn */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        #form-container h2 {
-            margin-top: 0;
-        }
-    </style>
+    
 </head>
 <body>
     <header>
-        <h1>GJ</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="product.html">Products</a>
-            <a href="cart.html">Cart</a>
-            
-        </nav>
+        <nav class="navbar">
+            <ul class="menu">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./product.html">Products</a></li>
+                <li><a href="./cart.html">Cart</a></li>
     </header>
-    <button id="toggle-form-button">Add/Remove Product</button> <!-- Nút để hiển thị form -->
-
-    <div id="form-container"> <!-- Phần chứa form -->
-        <h2>Add Product</h2>
-        <form id="product-request-form">
-            <input type="text" id="product-name" placeholder="Product Name" required>
-            <input type="text" id="product-note" placeholder="Product Note">
-            <input type="password" id="admin-password" placeholder="Enter admin password" required>
-            <button type="submit">Add Product</button>
-        </form>
-        <div id="product-price-display"></div>
-        
-        <h2>Remove Product</h2>
-        <form id="product-remove-form">
-            <input type="text" id="remove-product-name" placeholder="Product Name" required>
-            <input type="password" id="admin-password-remove" placeholder="Enter admin password" required>
-            <button type="submit">Remove Product</button>
-        </form>
-    </div>
     
 
 
